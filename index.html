@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title></title>
+	<script>document.write('<script src="http://'
+    + (location.host || 'localhost').split(':')[0]
+    + ':35729/livereload.js?snipver=1"></'
+    + 'script>')</script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <style>
+    	body {
+    		font-family: 'Iowan Old Style', 'Georgia', serif;
+    	}
+
+    	.hidden {
+    		display: none;
+    	}
+
+    	.try-it {
+    		clear: both;
+    		float: none;
+    		display: block;
+    	}
+
+    	#code {
+    		width: 40em;
+    		height: 10em;
+    		font-family: 'Source Code Pro', 'Menlo', monospace;
+    		background-color: black;
+    		color: #0F0;
+    		padding: 1em;
+    		font-size: 14px;
+    	}
+
+    	#dynamic-area {
+    		text-align: center;
+    		margin-top: 1em;
+    		width: 40em;
+    		padding: 0;
+    	}
+    </style>
+
+</head>
+<body>
+
+	<div id="button">
+		<h2>Javascript Buttons Sandbox</h2>
+		<p>Notes:
+			<ul>
+				<li><code>data-button</code>: buynow | cart | donate | subscribe | paynow (undocumented)</li>
+				<li><code>data-type</code>: button | form | qr</li>
+				<li><code>data-size</code>: small | medium | large</li>
+				<li><code>data-lc</code>: use the [language]_[country] syntax e.g. fr_FR, en_US, de_DE</li>
+			</ul>
+		</p>
+		<p>Requirements:
+			<ul>
+				<li><code>data-merchant</code> | remove the merchant ID from the URL parameters</li>
+				<li><code>data-height</code> and <code>data-width</code> | undocumented features that specify pixel dimensions and are defaulted when the user specifies <code>data-size</code></li>
+				<li><code>data-label</code> | undocumented feature that allows the user to manually specify a label</li>
+				<li><code>data-locale</code> | <strong>already implemented</strong> as <code>data-lc</code></li>
+				<li><code>data-funding</code> and <code>data-wordmark</code> | undocumented features that default to true and show/hide the credit card logos (bottom) and PayPal wordmark (right).</li>
+			</ul>
+		</p>
+		<p>Press <code>Tab</code> or click in the textarea to update the button</p>
+		<!--button class="try-it">Try It Now!</button-->
+		<textarea id="code">
+<script async src="dist/button.js"
+  data-merchant="6XF3MPZBZV6HU"
+  data-button="buynow"
+  data-type="button"
+  data-size="medium"
+  data-lc="en_US"
+>
+</script></textarea>
+		<!--button class="try-it">Try It Now!</button-->
+	</div>
+
+	<div id="dynamic-area">
+	</div>
+
+<a href="#"></a> <!-- this is here just so that I can refocus to the textbox if the dynamic area doesn't render for some reason -->
+
+<script>
+function tryIt() {
+	$('#dynamic-area').html($('#code').val());
+}
+
+$(function onReady() {
+	var refocus=false;
+	$('.try-it').on('click', tryIt);
+	$('#code').on('click', function() {
+		tryIt();
+	}).on('keydown', function (e) {
+		if (e.which === 9) {
+			refocus = true;
+			tryIt();
+		}
+	}).on('blur', function () {
+		if (refocus) {
+			$('#code').focus();
+			refocus = false;
+		}
+	});
+
+	tryIt();
+})
+
+
+
+</script>
+</body>
+</html>
