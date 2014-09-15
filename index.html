@@ -44,23 +44,6 @@
 
 	<div id="button">
 		<h2>Javascript Buttons Sandbox</h2>
-		<p>Notes:
-			<ul>
-				<li><code>data-button</code>: buynow | cart | donate | subscribe | paynow (undocumented)</li>
-				<li><code>data-type</code>: button | form | qr</li>
-				<li><code>data-size</code>: small | medium | large</li>
-				<li><code>data-lc</code>: use the [language]_[country] syntax e.g. fr_FR, en_US, de_DE</li>
-			</ul>
-		</p>
-		<p>Requirements:
-			<ul>
-				<li><code>data-merchant</code> | remove the merchant ID from the URL parameters</li>
-				<li><code>data-height</code> and <code>data-width</code> | undocumented features that specify pixel dimensions and are defaulted when the user specifies <code>data-size</code></li>
-				<li><code>data-label</code> | undocumented feature that allows the user to manually specify a label</li>
-				<li><code>data-locale</code> | <strong>already implemented</strong> as <code>data-lc</code></li>
-				<li><code>data-funding</code> and <code>data-wordmark</code> | undocumented features that default to true and show/hide the credit card logos (bottom) and PayPal wordmark (right).</li>
-			</ul>
-		</p>
 		<p>Press <code>Tab</code> or click in the textarea to update the button</p>
 		<!--button class="try-it">Try It Now!</button-->
 		<textarea id="code">
@@ -69,7 +52,8 @@
   data-button="buynow"
   data-type="button"
   data-size="medium"
-  data-lc="en_US"
+  data-lc="zh_CN"
+  data-height="100"
 >
 </script></textarea>
 		<!--button class="try-it">Try It Now!</button-->
